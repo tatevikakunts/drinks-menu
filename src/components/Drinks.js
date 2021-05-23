@@ -18,11 +18,18 @@ export default class Drinks extends Component{
             )
         }else if(this.state.error){
             return(<div>{this.state.error}</div>)
+        }else{
+            return(this.state.drinks.map((drink)=>(<Drink key={drink.idDrink} drink={drink}/>)))
         }
-        return(this.state.drinks.map((drink)=>(<Drink key={drink.idDrink} drink={drink}/>)))
+
     }
     componentDidMount() {
-        fetch(`${URL}filter.php?i=${this.props.ingredient}`)
+        this.fetchingData(this.props.ingredient)}
+    componentWillUpdate(nextProps) {
+        this.fetchingData(nextProps.ingredient)
+    }
+    fetchingData= (ingredient)=>{
+        fetch(`${URL}filter.php?i=${ingredient}`)
             .then(response=>response.json())
             .then(data=> {
                 this.setState({isLoading: false, drinks: data.drinks})
@@ -31,10 +38,14 @@ export default class Drinks extends Component{
 
     }
 
+
     render(){
         return(
-            <div className="drink-div">
-                {this.renderDrinks()}
+            <div className="container">
+                <div className="row">
+                    {this.renderDrinks()}
+                </div>
+
             </div>
         )
     }

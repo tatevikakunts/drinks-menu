@@ -2,10 +2,15 @@ import React from "react";
 
 const Drink = ({drink})=>{
     return(
-        <div className="drink-wrapper">
-            <div className="drink-card">
-                <h2 className="overlay-heading">{drink.strDrink}</h2>
-                <img src={drink.strDrinkThumb} alt="" className="drink-img"/>
+        <div className="col-md-3">
+            <div className="card">
+                <img src={drink.strDrinkThumb} alt="" />
+                <div className="card-body">
+                    <h2 className="card-title">{drink.strDrink}</h2>
+
+                </div>
+
+
 
             </div>
         </div>

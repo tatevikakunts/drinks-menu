@@ -4,7 +4,9 @@ import {IngredientContext} from "./App";
 export default class Ingredient extends Component{
     constructor(props) {
         super(props);
-
+        this.state={
+            ingredient:this.props.ingredient
+        }
     }
 
     render(){
@@ -13,8 +15,9 @@ export default class Ingredient extends Component{
                 {
                     (cnt)=>{
                         return(
-                            <div className="ingredient-btnlist">
-                                <button type="button" onClick={()=>{cnt.changeIngredient(this.props.ingredient.strIngredient1)}}>{this.props.ingredient.strIngredient1}</button>
+                            <div className="col-2 col-sm-6 col-md-2">
+
+                                <button type="button" className="btn btn-outline-warning my-1 " onClick={()=>{cnt.changeIngredient(this.state.ingredient.strIngredient1)}}>{this.state.ingredient.strIngredient1}</button>
                             </div>
                         )
                     }
