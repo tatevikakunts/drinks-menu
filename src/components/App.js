@@ -11,6 +11,7 @@ export default class App extends Component{
         super(props);
         this.state={
             ingredient:null,
+            show:true,
         }
     }
 
@@ -18,12 +19,24 @@ export default class App extends Component{
         this.setState({ ingredient:data})
     }
 
+    changeShow=()=>{
+        this.setState({show: true})
+    }
+
+
     renderDrinks = () => {
         if (this.state.ingredient)  {
             return (
-                <section className="container modal-window">
-                    <Drinks ingredient={this.state.ingredient} />
-                </section>
+                        <section >
+
+                            {
+                                this.state.show?<div className=" modal-window hide block"><Drinks ingredient={this.state.ingredient} />
+                                    <div id="closeBtn" onClick={()=>this.setState({show:!this.state.show})} >X</div>
+                                </div>:null
+                            }
+
+                        </section>
+
             )
         }
     }

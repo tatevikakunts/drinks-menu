@@ -41,7 +41,7 @@ export default class Drinks extends Component{
 
     render(){
         return(
-            <div className="container">
+            <div className="container-lg">
                 <div className="row">
                     {this.renderDrinks()}
                 </div>

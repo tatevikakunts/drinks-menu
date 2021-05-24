@@ -28,7 +28,7 @@ export default class Ingredients extends Component{
     render(){
         return(
 
-                <div className="row">
+                <div className="row ingredient-div">
                     {this.renderIngredients()}
                 </div>
 
