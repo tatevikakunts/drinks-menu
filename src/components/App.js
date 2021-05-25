@@ -16,12 +16,10 @@ export default class App extends Component{
     }
 
     changeIngredient=(data)=>{
-        this.setState({ ingredient:data})
+        this.setState({show:true, ingredient:data})
     }
 
-    changeShow=()=>{
-        this.setState({show: true})
-    }
+
 
 
     renderDrinks = () => {
@@ -31,7 +29,7 @@ export default class App extends Component{
 
                             {
                                 this.state.show?<div className=" modal-window hide block"><Drinks ingredient={this.state.ingredient} />
-                                    <div id="closeBtn" onClick={()=>this.setState({show:!this.state.show})} >X</div>
+                                    <div id="closeBtn" onClick={()=>this.setState({...this.state, show:!this.state.show})} >X</div>
                                 </div>:null
                             }
 
